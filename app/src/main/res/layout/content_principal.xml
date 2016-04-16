@@ -10,5 +10,6 @@
     tools:showIn="@layout/app_bar_principal" tools:context=".Principal">
 
     <TextView android:text="Hello World!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/texto_prueba" />
 </RelativeLayout>
