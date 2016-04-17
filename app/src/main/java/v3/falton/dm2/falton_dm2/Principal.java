@@ -30,6 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 public class Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,8 +73,35 @@ public class Principal extends AppCompatActivity
 
         String direccion2 = "http://modeled.es/SQL/buscarusuario.php?tipo_consulta=login&usu_email=prueba@prueba.com&usu_pass=prueba";
 
+
+
+
+
+        String urlParameters  = "parametro_post=a";
+        byte[] postData       = urlParameters.getBytes();
+        int    postDataLength = postData.length;
+        String request        = "http://modeled.es/SQL/buscarusuario.php";
+        URL    url            = new URL( request );
+        HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+        conn.setDoOutput( true );
+        conn.setInstanceFollowRedirects( false );
+        conn.setRequestMethod( "POST" );
+        conn.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded");
+        conn.setRequestProperty( "charset", "utf-8");
+        conn.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
+        conn.setUseCaches( false );
+
+
+
+
+
+
+
         leerURL rt = new leerURL(prueba);
         rt.execute(direccion2);
+
+
+
 
     }
 
